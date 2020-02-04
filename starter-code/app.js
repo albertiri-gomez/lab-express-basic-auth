@@ -11,7 +11,7 @@ const path         = require('path');
 
 
 mongoose
-  .connect('mongodb://localhost/starter-code', {useNewUrlParser: true})
+  .connect('mongodb://localhost/starter-code', {useNewUrlParser: true, useUnifiedTopology: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -51,8 +51,8 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 //En el learning dice que se sustituya esta ruta por const router
-//const index = require('./routes/index');
-//app.use('/', index);
+const index = require('./routes/index');
+app.use('/', index);
 
 const router = require('./routes/auth');
 app.use('/', router);
